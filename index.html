@@ -2,9 +2,16 @@
 <html lang="ja">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>フルスタックプロジェクト見積もりツール</title>
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>フルスタックプロジェクト見積もりツール</title>
+        <link rel="icon" href="favicon.ico" type="image/x-icon">
+        <link rel="icon" href="assets/icons/favicon.png" type="image/png">
+
+    </head>
+
     <style>
         * {
             margin: 0;
@@ -28,7 +35,7 @@
         .header {
             text-align: center;
             color: #000000;
-            margin-bottom: 40px;
+            margin: 30px 0 40px 0;
         }
 
         .header h1 {
@@ -39,9 +46,14 @@
         }
 
         .header p {
-            font-size: 1.1rem;
+            font-size: 1rem;
             opacity: 0.9;
-            color: #d6351a;
+            color: #333333;
+            font-weight: 500;
+        }
+
+        .main-title {
+            margin: 15px 0 10px 0;
         }
 
         .reference-section {
@@ -99,6 +111,17 @@
             color: #667eea;
         }
 
+        .red {
+            color: #d6351a;
+            font-size: 13px;
+        }
+
+        .amount {
+            margin-top: 10px;
+            color: #d6351a !important;
+            font-weight: 600;
+        }
+
         .control-buttons {
             display: flex;
             gap: 15px;
@@ -138,7 +161,7 @@
         .section-header {
             margin-bottom: 25px;
             padding-bottom: 15px;
-            border-bottom: 3px solid;
+            border-bottom: 3px solid #d6351a;
         }
 
         .frontend-section .section-header {
@@ -249,14 +272,18 @@
         .total-amount {
             font-size: 3rem;
             font-weight: bold;
-            color: #f5576c;
+            color: #d6351a;
             margin: 20px 0;
+            border: 3px dotted;
+            padding: 20px;
+            border-radius: 27px;
         }
 
         .yen-amount {
             font-size: 1.5rem;
             color: #666;
             margin-bottom: 30px;
+            text-align: center;
         }
 
         .breakdown {
@@ -274,7 +301,7 @@
         }
 
         .breakdown-label {
-            font-size: 0.9rem;
+            font-size: 1rem;
             color: #fff;
             margin-bottom: 5px;
             font-weight: 600;
@@ -291,7 +318,8 @@
             border-radius: 8px;
             padding: 25px;
             margin-top: 30px;
-            border-left: 4px solid #d6351a;
+            border-left: 13px solid #d6351a;
+            grid-column: 1 / -1;
         }
 
         .notes h3 {
@@ -348,9 +376,11 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>フルスタックプロジェクト見積もり</h1>
+            <img src="assets/logo.png" />
+            <h1 class="main-title">フルスタックプロジェクト見積もり</h1>
             <p>モダンなWeb開発ツールの月額コスト計算ツール</p>
         </div>
+
 
         <!-- Reference Sites Section -->
         <div class="reference-section">
@@ -453,7 +483,7 @@
                             <p>AI-powered code completion</p>
                         </div>
                         <div class="tool-controls">
-                            <div class="tool-price">$10/月</div>
+                            <div class="tool-price">$39/月</div>
 
                         </div>
                     </div>
@@ -478,7 +508,7 @@
                             <p>Advanced design features</p>
                         </div>
                         <div class="tool-controls">
-                            <div class="tool-price">$12/月</div>
+                            <div class="tool-price">¥3000/月</div>
                         </div>
                     </div>
 
@@ -503,15 +533,16 @@
                             <p>Error tracking & performance monitoring</p>
                         </div>
                         <div class="tool-controls">
-                            <div class="tool-price">$26/月</div>
+                            <div class="tool-price">$29/月</div>
 
                         </div>
                     </div>
                 </div>
 
                 <div class="subtotal" id="frontend-total">
-                    フロントエンド小計: $89/月
+                    フロントエンド小計: 約 ¥19,350/月
                 </div>
+
             </div>
 
             <!-- Backend Section -->
@@ -529,21 +560,23 @@
                             <p>t3.small instance, PostgreSQL, storage</p>
                         </div>
                         <div class="tool-controls">
-                            <div class="tool-price">$42/月</div>
+                            <div class="tool-price">$80/月</div>
 
                         </div>
                     </div>
 
                     <div class="tool-item selected" data-price="29">
                         <div class="tool-info">
-                            <h4>PlanetScale</h4>
-                            <p>Serverless MySQL database</p>
+                            <h4 class="tool-name">PlanetScale</h4>
+                            <p class="tool-description">Serverless MySQL database</p>
+                            <span class="red">※ 2vCPUs ・ 16GB Memory ・ 10GB Storage</span>
                         </div>
                         <div class="tool-controls">
-                            <div class="tool-price">$29/月</div>
-
+                            <div class="tool-price">$428/月</div>
                         </div>
+
                     </div>
+
 
                     <div class="tool-item selected" data-price="7">
                         <div class="tool-info">
@@ -551,7 +584,7 @@
                             <p>Caching & session storage</p>
                         </div>
                         <div class="tool-controls">
-                            <div class="tool-price">$7/月</div>
+                            <div class="tool-price">$43.99/月</div>
 
                         </div>
                     </div>
@@ -577,7 +610,7 @@
                             <p>Authentication service</p>
                         </div>
                         <div class="tool-controls">
-                            <div class="tool-price">$23/月</div>
+                            <div class="tool-price">$35/月</div>
                         </div>
                     </div>
 
@@ -587,7 +620,7 @@
                             <p>Email API service</p>
                         </div>
                         <div class="tool-controls">
-                            <div class="tool-price">$15/月</div>
+                            <div class="tool-price">¥1,500月</div>
 
                         </div>
                     </div>
@@ -602,93 +635,105 @@
                             <p>Infrastructure monitoring</p>
                         </div>
                         <div class="tool-controls">
-                            <div class="tool-price">$15/月</div>
+                            <div class="tool-price">$42.50/月</div>
                         </div>
                     </div>
                 </div>
 
+
+
+
+
                 <div class="subtotal" id="backend-total">
-                    バックエンド小計: $123/月
+                    バックエンド小計:約 ¥98,114 /月
+                </div>
+
+
+
+            </div>
+
+
+            <!-- Project Management Section -->
+            <section class="section project-section" aria-label="プロジェクト管理ツール">
+                <div class="section-header">
+                    <h2 class="section-title">プロジェクト管理</h2>
+                </div>
+
+                <div class="tool-category">
+                    <h3 class="category-title">コラボレーション & タスク管理</h3>
+
+                    <div class="tool-item" tabindex="0" role="switch" aria-checked="true"
+                        onkeydown="handleKey(event, this)">
+                        <div class="tool-info">
+                            <h4>Redmine</h4>
+                            <p>オープンソースのプロジェクト管理ソフトウェア</p>
+                        </div>
+                        <div>
+                            <span class="tool-price">¥1,400/月</span>
+                            <label class="toggle-switch">
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                    </div>
+
+
+                    <div class="tool-item" tabindex="0" role="switch" aria-checked="false">
+                        <div class="tool-info">
+                            <h4>Jira</h4>
+                            <p>アジャイルプロジェクト管理</p>
+                        </div>
+                        <div>
+                            <span class="tool-price">¥1810/月</span>
+                            <label class="toggle-switch">
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="subtotal" id="project-subtotal">プロジェクト管理小計: 3210円/月</div>
+            </section>
+
+
+            <!-- Total Section -->
+            <div class="total-section">
+                <h2>月額合計 (Monthly Total)</h2>
+                <div class="total-amount" id="total-amount">約 ¥118,746</div>
+
+                <div class="breakdown">
+                    <div class="breakdown-item">
+                        <div class="breakdown-label">フロントエンド</div>
+                        <div class="breakdown-value" id="frontend-breakdown">¥19,350</div>
+                    </div>
+                    <div class="breakdown-item">
+                        <div class="breakdown-label">バックエンド</div>
+                        <div class="breakdown-value" id="backend-breakdown">¥98,173.5</div>
+                    </div>
+
+                    <div class="breakdown-item">
+                        <div class="breakdown-label">プロジェクト管理</div>
+                        <div class="breakdown-value" id="backend-breakdown">¥1,222.5</div>
+                    </div>
+                    <div class="breakdown-item">
+                        <div class="breakdown-label">年間予算</div>
+                        <div class="breakdown-value" id="yearly-budget">¥1,472,450</div>
+                    </div>
                 </div>
             </div>
+
+            <section class="notes">
+                <h3>重要な注意事項</h3>
+                <ul>
+                    <li>AWSなど、クラウドとバックエンドに関しては、利用金額が変動する可能性があります。</li>
+                    <li>価格は為替レート・サービスの価格改定により変動する場合があります。</li>
+                    <li>実際の利用量に応じて、従量課金が発生する場合があります。</li>
+                    <li>一部のサービスは無料プランから開始できます。</li>
+                    <li>プロジェクトの規模に応じてツールの選択を調整してください。</li>
+                    <li>最新の料金情報は各サービスの公式サイトでご確認ください。</li>
+                </ul>
+            </section>
+
         </div>
-
-
-        <!-- Project Management Section -->
-        <section class="section project-section" aria-label="プロジェクト管理ツール">
-            <div class="section-header">
-                <h2 class="section-title">プロジェクト管理</h2>
-            </div>
-
-            <div class="tool-category">
-                <h3 class="category-title">コラボレーション & タスク管理</h3>
-
-                <div class="tool-item" tabindex="0" role="switch" aria-checked="true"
-                    onkeydown="handleKey(event, this)">
-                    <div class="tool-info">
-                        <h4>Redmine</h4>
-                        <p>オープンソースのプロジェクト管理ソフトウェア</p>
-                    </div>
-                    <div>
-                        <span class="tool-price">1,400円/月</span>
-                        <label class="toggle-switch">
-                            <span class="slider"></span>
-                        </label>
-                    </div>
-                </div>
-
-
-                <div class="tool-item" tabindex="0" role="switch" aria-checked="false">
-                    <div class="tool-info">
-                        <h4>Jira</h4>
-                        <p>アジャイルプロジェクト管理</p>
-                    </div>
-                    <div>
-                        <span class="tool-price">$10/月</span>
-                        <label class="toggle-switch">
-                            <span class="slider"></span>
-                        </label>
-                    </div>
-                </div>
-            </div>
-
-            <div class="subtotal" id="project-subtotal">プロジェクト管理小計: $8/月</div>
-        </section>
-
-
-        <!-- Total Section -->
-        <div class="total-section">
-            <h2>月額合計 (Monthly Total)</h2>
-            <div class="total-amount" id="total-amount">$212</div>
-            <div class="yen-amount" id="yen-amount">約 ¥31,800 (1USD = 150円)</div>
-
-            <div class="breakdown">
-                <div class="breakdown-item">
-                    <div class="breakdown-label">フロントエンド</div>
-                    <div class="breakdown-value" id="frontend-breakdown">$89</div>
-                </div>
-                <div class="breakdown-item">
-                    <div class="breakdown-label">バックエンド</div>
-                    <div class="breakdown-value" id="backend-breakdown">$123</div>
-                </div>
-                <div class="breakdown-item">
-                    <div class="breakdown-label">年間予算</div>
-                    <div class="breakdown-value" id="yearly-budget">¥381K</div>
-                </div>
-            </div>
-        </div>
-
-        <div class="notes">
-            <h3>重要な注意事項</h3>
-            <ul>
-                <li>価格は為替レート・サービスの価格改定により変動する場合があります</li>
-                <li>実際の利用量に応じて、従量課金が発生する場合があります</li>
-                <li>一部のサービスは無料プランから開始できます</li>
-                <li>プロジェクトの規模に応じてツールの選択を調整してください</li>
-                <li>最新の料金情報は各サービスの公式サイトでご確認ください</li>
-            </ul>
-        </div>
-    </div>
 
 
 </body>
