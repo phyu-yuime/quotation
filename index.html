@@ -4,194 +4,343 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Full Stack Project 見積書</title>
+    <title>フルスタックプロジェクト見積もりツール</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            max-width: 1000px;
-            margin: 0 auto;
+            font-family: 'Segoe UI', 'Hiragino Sans', 'Yu Gothic UI', sans-serif;
+            background: linear-gradient(135deg, #ffffff 0%, #f7f3fa 100%);
+            min-height: 100vh;
+            color: #333;
             padding: 20px;
-            background-color: #f8f9fa;
         }
 
         .container {
-            background-color: white;
-            border-radius: 12px;
-            padding: 30px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
         .header {
             text-align: center;
-            margin-bottom: 30px;
-            border-bottom: 3px solid #007bff;
-            padding-bottom: 20px;
+            color: #000000;
+            margin-bottom: 40px;
         }
 
         .header h1 {
-            color: #007bff;
-            margin: 0;
-            font-size: 2.5em;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            color: #d6351a;
         }
 
         .header p {
-            color: #6c757d;
-            margin: 10px 0 0 0;
-            font-size: 1.2em;
+            font-size: 1.1rem;
+            opacity: 0.9;
+            color: #d6351a;
         }
 
-        .project-section {
-            margin-bottom: 40px;
-            border: 2px solid #e9ecef;
-            border-radius: 10px;
-            overflow: hidden;
+        .reference-section {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 12px rgba(12, 12, 12, 0.1);
         }
 
-        .project-header {
-            padding: 20px;
-            font-size: 1.4em;
-            font-weight: bold;
-            color: white;
-            text-align: center;
+        .reference-section h3 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+            padding-bottom: 10px;
+            border-left: 6px solid #d6351a;
+            padding: 0 10px;
         }
 
-        .frontend-header {
+        .reference-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 15px;
+        }
+
+        .reference-link {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            text-decoration: none;
+            color: #333;
+            border: 2px solid #d6351a;
+        }
+
+        .reference-link:hover {
+            background: #e9ecef;
+        }
+
+        .reference-info h4 {
+            font-size: 1rem;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        .reference-info p {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .reference-url {
+            font-size: 0.85rem;
+            color: #667eea;
+        }
+
+        .control-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin: 30px 0;
+        }
+
+        .control-button {
+            padding: 12px 24px;
+            border: 2px solid #667eea;
+            background: white;
+            color: #667eea;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .control-button:hover {
             background: #667eea;
+            color: white;
         }
 
-        .backend-header {
-            background: #f5576c;
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 40px;
         }
 
         .section {
-            margin-bottom: 25px;
-            padding: 0 20px;
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
 
-        .section h3 {
-            color: #495057;
-            border-left: 4px solid #007bff;
-            padding-left: 15px;
-            margin-bottom: 15px;
-            font-size: 1.1em;
+        .section-header {
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid;
+        }
+
+        .frontend-section .section-header {
+            border-color: #d6351a;
+        }
+
+        .backend-section .section-header {
+            border-color: #d6351a;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #d6351a;
         }
 
         .tool-category {
-            background-color: #f8f9fa;
-            border-radius: 8px;
-            padding: 20px;
+            margin-bottom: 25px;
+        }
+
+        .category-title {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #d6351a;
             margin-bottom: 15px;
+            padding-left: 10px;
+            border-left: 4px solid #d6351a;
         }
 
         .tool-item {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 12px 0;
-            border-bottom: 1px solid #e9ecef;
+            padding: 15px;
+            margin-bottom: 10px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            cursor: pointer;
+            border: 2px solid d6351a;
         }
 
-        .tool-item:last-child {
-            border-bottom: none;
+        .tool-item:hover {
+            background: #e9ecef;
         }
 
-        .tool-name {
-            font-weight: 600;
-            color: #343a40;
+        .tool-item.selected {
+            background: #e3f2fd;
+            border-color: #d6351a;
         }
 
-        .tool-description {
-            font-size: 0.9em;
-            color: #6c757d;
-            margin-top: 3px;
+        .tool-info h4 {
+            font-size: 1rem;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        .tool-info p {
+            font-size: 0.9rem;
+            color: #666;
         }
 
         .tool-price {
+            font-size: 1.1rem;
             font-weight: bold;
-            color: #28a745;
-            font-size: 1.1em;
+            color: #d6351a;
+        }
+
+        .tool-controls {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .select-button {
+            padding: 8px 16px;
+            border: 2px solid #667eea;
+            background: white;
+            color: #667eea;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+
+        .select-button.selected {
+            background: #667eea;
+            color: white;
         }
 
         .subtotal {
-            background-color: #e3f2fd;
+            background: linear-gradient(45deg, #d6351a, #f54f32);
+            color: white;
+            padding: 20px;
             border-radius: 8px;
-            padding: 15px 20px;
-            margin: 20px;
             text-align: center;
+            font-size: 1.3rem;
             font-weight: bold;
-            color: #1565c0;
-            font-size: 1.2em;
+            margin-top: 20px;
         }
 
         .total-section {
-            background: #f5576c;
-            color: white;
-            padding: 30px;
-            border-radius: 10px;
+            background: white;
+            border-radius: 12px;
+            padding: 40px;
             text-align: center;
-            margin-top: 30px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
 
         .total-amount {
-            font-size: 3em;
+            font-size: 3rem;
             font-weight: bold;
-            margin: 15px 0;
+            color: #f5576c;
+            margin: 20px 0;
         }
 
-        .total-breakdown {
-            display: flex;
-            justify-content: space-around;
-            margin-top: 20px;
-            flex-wrap: wrap;
+        .yen-amount {
+            font-size: 1.5rem;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .breakdown {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
         }
 
         .breakdown-item {
+            padding: 20px;
+            background: #fa9608;
+            border-radius: 8px;
             text-align: center;
-            margin: 10px;
         }
 
         .breakdown-label {
-            font-size: 0.9em;
-            opacity: 0.8;
+            font-size: 0.9rem;
+            color: #fff;
+            margin-bottom: 5px;
+            font-weight: 600;
         }
 
         .breakdown-value {
-            font-size: 1.3em;
+            font-size: 1.3rem;
             font-weight: bold;
+            color: #333;
         }
 
         .notes {
-            background-color: #fff3cd;
-            border: 1px solid #ffeaa7;
+            background: #fff3cd;
             border-radius: 8px;
-            padding: 20px;
-            margin-top: 25px;
+            padding: 25px;
+            margin-top: 30px;
+            border-left: 4px solid #d6351a;
         }
 
         .notes h3 {
             color: #856404;
-            margin-top: 0;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
         }
 
         .notes ul {
+            list-style-type: none;
             color: #856404;
-            line-height: 1.6;
         }
 
-        .date {
-            text-align: right;
-            color: #6c757d;
-            margin-top: 20px;
-            font-style: italic;
+        .notes li {
+            margin-bottom: 10px;
+            padding-left: 20px;
+            position: relative;
         }
 
-        .tier-selector {
-            background: #764ba2;
-            color: white;
-            padding: 20px;
-            border-radius: 10px;
-            margin-bottom: 30px;
-            text-align: center;
+        .notes li:before {
+            content: "・";
+            position: absolute;
+            left: 0;
+            color: #856404;
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .total-amount {
+                font-size: 2.5rem;
+            }
+
+            .reference-links {
+                grid-template-columns: 1fr;
+            }
+
+            .control-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
         }
     </style>
 </head>
@@ -199,244 +348,349 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>Full Stack Project 見積書</h1>
-            <p>Frontend + Backend Monthly Subscription Costs</p>
+            <h1>フルスタックプロジェクト見積もり</h1>
+            <p>モダンなWeb開発ツールの月額コスト計算ツール</p>
         </div>
 
-        <div class="tier-selector">
-            <h2>スタートアップ〜中規模プロジェクト向け</h2>
-            <p>個人開発者からチーム開発まで対応</p>
-        </div>
+        <!-- Reference Sites Section -->
+        <div class="reference-section">
+            <h3>参考サイト・公式ページ</h3>
+            <div class="reference-links">
+                <a href="https://github.com/pricing" class="reference-link" target="_blank">
+                    <div class="reference-info">
+                        <h4>GitHub Pricing</h4>
+                        <p>GitHub Pro・Copilotの料金情報</p>
+                    </div>
+                    <div class="reference-url">github.com/pricing</div>
+                </a>
 
-        <!-- Frontend Section -->
-        <div class="project-section">
-            <div class="project-header frontend-header">
-                Frontend Development Tools
-            </div>
+                <a href="https://www.figma.com/pricing/" class="reference-link" target="_blank">
+                    <div class="reference-info">
+                        <h4>Figma Pricing</h4>
+                        <p>デザインツールの料金プラン</p>
+                    </div>
+                    <div class="reference-url">figma.com/pricing</div>
+                </a>
 
-            <div class="section">
-                <h3>開発 & AI ツール</h3>
-                <div class="tool-category">
-                    <div class="tool-item">
-                        <div>
-                            <div class="tool-name">GitHub Copilot Individual</div>
-                            <div class="tool-description">AI-powered code completion</div>
-                        </div>
-                        <div class="tool-price">$10/月</div>
+                <a href="https://vercel.com/pricing" class="reference-link" target="_blank">
+                    <div class="reference-info">
+                        <h4>Vercel Pricing</h4>
+                        <p>フロントエンドホスティング料金</p>
                     </div>
-                    <div class="tool-item">
-                        <div>
-                            <div class="tool-name">GitHub Pro</div>
-                            <div class="tool-description">Private repos, advanced features</div>
-                        </div>
-                        <div class="tool-price">$4/月</div>
-                    </div>
-                </div>
-            </div>
+                    <div class="reference-url">vercel.com/pricing</div>
+                </a>
 
-            <div class="section">
-                <h3>デザイン & UI ツール</h3>
-                <div class="tool-category">
-                    <div class="tool-item">
-                        <div>
-                            <div class="tool-name">Figma Professional</div>
-                            <div class="tool-description">Advanced design features</div>
-                        </div>
-                        <div class="tool-price">$12/月</div>
+                <a href="https://aws.amazon.com/pricing/" class="reference-link" target="_blank">
+                    <div class="reference-info">
+                        <h4>AWS Pricing</h4>
+                        <p>クラウドサービス料金計算機</p>
                     </div>
-                    <div class="tool-item">
-                        <div>
-                            <div class="tool-name">Vercel Pro</div>
-                            <div class="tool-description">Frontend deployment & hosting</div>
-                        </div>
-                        <div class="tool-price">$20/月</div>
-                    </div>
-                </div>
-            </div>
+                    <div class="reference-url">aws.amazon.com/pricing</div>
+                </a>
 
-            <div class="section">
-                <h3>監視 & 分析</h3>
-                <div class="tool-category">
-                    <div class="tool-item">
-                        <div>
-                            <div class="tool-name">Sentry (Frontend)</div>
-                            <div class="tool-description">Error tracking & performance monitoring</div>
-                        </div>
-                        <div class="tool-price">$26/月</div>
+                <a href="https://planetscale.com/pricing" class="reference-link" target="_blank">
+                    <div class="reference-info">
+                        <h4>PlanetScale Pricing</h4>
+                        <p>サーバーレスMySQL料金</p>
                     </div>
-                </div>
-            </div>
+                    <div class="reference-url">planetscale.com/pricing</div>
+                </a>
 
-            <div class="subtotal">
-                Frontend 小計: $72/月
-            </div>
-        </div>
+                <a href="https://stripe.com/pricing" class="reference-link" target="_blank">
+                    <div class="reference-info">
+                        <h4>Stripe Pricing</h4>
+                        <p>決済サービス手数料</p>
+                    </div>
+                    <div class="reference-url">stripe.com/pricing</div>
+                </a>
 
-        <!-- Backend Section -->
-        <div class="project-section">
-            <div class="project-header backend-header">
-                ⚙️ Backend Development & Infrastructure
-            </div>
+                <a href="https://auth0.com/pricing" class="reference-link" target="_blank">
+                    <div class="reference-info">
+                        <h4>Auth0 Pricing</h4>
+                        <p>認証サービス料金プラン</p>
+                    </div>
+                    <div class="reference-url">auth0.com/pricing</div>
+                </a>
 
-            <div class="section">
-                <h3>クラウドインフラ & ホスティング</h3>
-                <div class="tool-category">
-                    <div class="tool-item">
-                        <div>
-                            <div class="tool-name">AWS (EC2 + RDS + S3)</div>
-                            <div class="tool-description">t3.small instance, PostgreSQL, storage</div>
-                        </div>
-                        <div class="tool-price">$35-50/月</div>
+                <a href="https://www.datadoghq.com/pricing/" class="reference-link" target="_blank">
+                    <div class="reference-info">
+                        <h4>Datadog Pricing</h4>
+                        <p>インフラ監視ツール料金</p>
                     </div>
-                    <div class="tool-item">
-                        <div>
-                            <div class="tool-name">Railway / Render</div>
-                            <div class="tool-description">Alternative managed hosting</div>
-                        </div>
-                        <div class="tool-price">$20-35/月</div>
+                    <div class="reference-url">datadoghq.com/pricing</div>
+                </a>
+                <a href="https://www.redmine.org/" class="reference-link" target="_blank">
+                    <div class="reference-info">
+                        <h4>Redmine</h4>
+                        <p>オープンソースのプロジェクト管理ツール</p>
                     </div>
-                </div>
-            </div>
+                    <div class="reference-url">www.redmine.org</div>
+                </a>
 
-            <div class="section">
-                <h3>データベース & ストレージ</h3>
-                <div class="tool-category">
-                    <div class="tool-item">
-                        <div>
-                            <div class="tool-name">PlanetScale</div>
-                            <div class="tool-description">Serverless MySQL database</div>
-                        </div>
-                        <div class="tool-price">$29/月</div>
+                <a href="https://www.atlassian.com/software/jira" class="reference-link" target="_blank">
+                    <div class="reference-info">
+                        <h4>Jira</h4>
+                        <p>アトラシアンによるアジャイルプロジェクト管理ツール</p>
                     </div>
-                    <div class="tool-item">
-                        <div>
-                            <div class="tool-name">Redis Cloud</div>
-                            <div class="tool-description">Caching & session storage</div>
-                        </div>
-                        <div class="tool-price">$7/月</div>
-                    </div>
-                    <div class="tool-item">
-                        <div>
-                            <div class="tool-name">Cloudinary</div>
-                            <div class="tool-description">Image & media management</div>
-                        </div>
-                        <div class="tool-price">$18/月</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="section">
-                <h3>API & サービス統合</h3>
-                <div class="tool-category">
-                    <div class="tool-item">
-                        <div>
-                            <div class="tool-name">Stripe</div>
-                            <div class="tool-description">Payment processing</div>
-                        </div>
-                        <div class="tool-price">$0-15/月</div>
-                    </div>
-                    <div class="tool-item">
-                        <div>
-                            <div class="tool-name">SendGrid</div>
-                            <div class="tool-description">Email API service</div>
-                        </div>
-                        <div class="tool-price">$15/月</div>
-                    </div>
-                    <div class="tool-item">
-                        <div>
-                            <div class="tool-name">Auth0</div>
-                            <div class="tool-description">Authentication service</div>
-                        </div>
-                        <div class="tool-price">$23/月</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="section">
-                <h3>CI/CD & DevOps</h3>
-                <div class="tool-category">
-                    <div class="tool-item">
-                        <div>
-                            <div class="tool-name">GitHub Actions</div>
-                            <div class="tool-description">CI/CD pipelines</div>
-                        </div>
-                        <div class="tool-price">$0-20/月</div>
-                    </div>
-                    <div class="tool-item">
-                        <div>
-                            <div class="tool-name">Docker Hub Pro</div>
-                            <div class="tool-description">Container registry</div>
-                        </div>
-                        <div class="tool-price">$5/月</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="section">
-                <h3>監視 & ログ管理</h3>
-                <div class="tool-category">
-                    <div class="tool-item">
-                        <div>
-                            <div class="tool-name">DataDog</div>
-                            <div class="tool-description">Infrastructure monitoring</div>
-                        </div>
-                        <div class="tool-price">$15/月</div>
-                    </div>
-                    <div class="tool-item">
-                        <div>
-                            <div class="tool-name">LogRocket</div>
-                            <div class="tool-description">Session replay & logging</div>
-                        </div>
-                        <div class="tool-price">$99/月</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="subtotal">
-                Backend 小計: $166-226/月
+                    <div class="reference-url">www.atlassian.com</div>
+                </a>
             </div>
         </div>
+
+        <div class="main-content">
+            <!-- Frontend Section -->
+            <div class="section frontend-section">
+                <div class="section-header">
+                    <div class="section-title">フロントエンド開発ツール</div>
+                </div>
+
+                <div class="tool-category">
+                    <div class="category-title">開発 & AI ツール</div>
+
+                    <div class="tool-item selected" data-price="10">
+                        <div class=" tool-info">
+                            <h4>GitHub Copilot Individual</h4>
+                            <p>AI-powered code completion</p>
+                        </div>
+                        <div class="tool-controls">
+                            <div class="tool-price">$10/月</div>
+
+                        </div>
+                    </div>
+
+                    <div class="tool-item selected" data-price="21">
+                        <div class=" tool-info">
+                            <h4>GitHub Pro</h4>
+                            <p>Private repos, advanced features</p>
+                        </div>
+                        <div class="tool-controls">
+                            <div class="tool-price">$21/月</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tool-category">
+                    <div class="category-title">デザイン & UI ツール</div>
+
+                    <div class="tool-item selected" data-price="12">
+                        <div class="tool-info">
+                            <h4>Figma Professional</h4>
+                            <p>Advanced design features</p>
+                        </div>
+                        <div class="tool-controls">
+                            <div class="tool-price">$12/月</div>
+                        </div>
+                    </div>
+
+                    <div class="tool-item selected" data-price="20" )">
+                        <div class="tool-info">
+                            <h4>Vercel Pro</h4>
+                            <p>Frontend deployment & hosting</p>
+                        </div>
+                        <div class="tool-controls">
+                            <div class="tool-price">$20/月</div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tool-category">
+                    <div class="category-title">監視 & 分析</div>
+
+                    <div class="tool-item selected" data-price="26">
+                        <div class="tool-info">
+                            <h4>Sentry Frontend</h4>
+                            <p>Error tracking & performance monitoring</p>
+                        </div>
+                        <div class="tool-controls">
+                            <div class="tool-price">$26/月</div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="subtotal" id="frontend-total">
+                    フロントエンド小計: $89/月
+                </div>
+            </div>
+
+            <!-- Backend Section -->
+            <div class="section backend-section">
+                <div class="section-header">
+                    <div class="section-title">バックエンド開発・インフラ</div>
+                </div>
+
+                <div class="tool-category">
+                    <div class="category-title">クラウドインフラ & データベース</div>
+
+                    <div class="tool-item selected" data-price="42">
+                        <div class="tool-info">
+                            <h4>AWS (EC2 + RDS + S3)</h4>
+                            <p>t3.small instance, PostgreSQL, storage</p>
+                        </div>
+                        <div class="tool-controls">
+                            <div class="tool-price">$42/月</div>
+
+                        </div>
+                    </div>
+
+                    <div class="tool-item selected" data-price="29">
+                        <div class="tool-info">
+                            <h4>PlanetScale</h4>
+                            <p>Serverless MySQL database</p>
+                        </div>
+                        <div class="tool-controls">
+                            <div class="tool-price">$29/月</div>
+
+                        </div>
+                    </div>
+
+                    <div class="tool-item selected" data-price="7">
+                        <div class="tool-info">
+                            <h4>Redis Cloud</h4>
+                            <p>Caching & session storage</p>
+                        </div>
+                        <div class="tool-controls">
+                            <div class="tool-price">$7/月</div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tool-category">
+                    <div class="category-title">API & サービス統合</div>
+
+                    <div class="tool-item selected" data-price="15">
+                        <div class="tool-info">
+                            <h4>Stripe</h4>
+                            <p>Payment processing</p>
+                        </div>
+                        <div class="tool-controls">
+                            <div class="tool-price">$15/月</div>
+
+                        </div>
+                    </div>
+
+                    <div class="tool-item selected" data-price="23">
+                        <div class="tool-info">
+                            <h4>Auth0</h4>
+                            <p>Authentication service</p>
+                        </div>
+                        <div class="tool-controls">
+                            <div class="tool-price">$23/月</div>
+                        </div>
+                    </div>
+
+                    <div class="tool-item selected" data-price="15">
+                        <div class="tool-info">
+                            <h4>SendGrid</h4>
+                            <p>Email API service</p>
+                        </div>
+                        <div class="tool-controls">
+                            <div class="tool-price">$15/月</div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tool-category">
+                    <div class="category-title">監視 & ログ管理</div>
+
+                    <div class="tool-item selected" data-price="15">
+                        <div class="tool-info">
+                            <h4>DataDog</h4>
+                            <p>Infrastructure monitoring</p>
+                        </div>
+                        <div class="tool-controls">
+                            <div class="tool-price">$15/月</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="subtotal" id="backend-total">
+                    バックエンド小計: $123/月
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Project Management Section -->
+        <section class="section project-section" aria-label="プロジェクト管理ツール">
+            <div class="section-header">
+                <h2 class="section-title">プロジェクト管理</h2>
+            </div>
+
+            <div class="tool-category">
+                <h3 class="category-title">コラボレーション & タスク管理</h3>
+
+                <div class="tool-item" tabindex="0" role="switch" aria-checked="true"
+                    onkeydown="handleKey(event, this)">
+                    <div class="tool-info">
+                        <h4>Redmine</h4>
+                        <p>オープンソースのプロジェクト管理ソフトウェア</p>
+                    </div>
+                    <div>
+                        <span class="tool-price">1,400円/月</span>
+                        <label class="toggle-switch">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                </div>
+
+
+                <div class="tool-item" tabindex="0" role="switch" aria-checked="false">
+                    <div class="tool-info">
+                        <h4>Jira</h4>
+                        <p>アジャイルプロジェクト管理</p>
+                    </div>
+                    <div>
+                        <span class="tool-price">$10/月</span>
+                        <label class="toggle-switch">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="subtotal" id="project-subtotal">プロジェクト管理小計: $8/月</div>
+        </section>
+
 
         <!-- Total Section -->
         <div class="total-section">
             <h2>月額合計 (Monthly Total)</h2>
-            <div class="total-amount">$238 - $298</div>
-            <p>約 ¥35,700 - ¥44,700 (1USD = 150円計算)</p>
+            <div class="total-amount" id="total-amount">$212</div>
+            <div class="yen-amount" id="yen-amount">約 ¥31,800 (1USD = 150円)</div>
 
-            <div class="total-breakdown">
+            <div class="breakdown">
                 <div class="breakdown-item">
-                    <div class="breakdown-label">Frontend</div>
-                    <div class="breakdown-value">$72</div>
+                    <div class="breakdown-label">フロントエンド</div>
+                    <div class="breakdown-value" id="frontend-breakdown">$89</div>
                 </div>
                 <div class="breakdown-item">
-                    <div class="breakdown-label">Backend</div>
-                    <div class="breakdown-value">$166-226</div>
+                    <div class="breakdown-label">バックエンド</div>
+                    <div class="breakdown-value" id="backend-breakdown">$123</div>
                 </div>
                 <div class="breakdown-item">
                     <div class="breakdown-label">年間予算</div>
-                    <div class="breakdown-value">¥428K-536K</div>
+                    <div class="breakdown-value" id="yearly-budget">¥381K</div>
                 </div>
             </div>
         </div>
 
         <div class="notes">
-            <h3>📝 重要な注意事項</h3>
+            <h3>重要な注意事項</h3>
             <ul>
-                <li><strong>スケーラビリティ:</strong> トラフィック増加に応じてインフラコストが変動</li>
-                <li><strong>開発段階:</strong> 初期は無料プランから始めて段階的にアップグレード可能</li>
-                <li><strong>チーム規模:</strong> 開発者数に応じてライセンス費用が増加</li>
-                <li><strong>地域対応:</strong> 日本リージョン使用で追加コストの可能性</li>
-                <li><strong>年間契約:</strong> 多くのサービスで年間契約割引あり（10-20%削減）</li>
-                <li><strong>代替案:</strong> オープンソース・セルフホスト版でコスト削減可能</li>
-                <li><strong>監視ツール:</strong> 本格運用前は簡易版から開始推奨</li>
+                <li>価格は為替レート・サービスの価格改定により変動する場合があります</li>
+                <li>実際の利用量に応じて、従量課金が発生する場合があります</li>
+                <li>一部のサービスは無料プランから開始できます</li>
+                <li>プロジェクトの規模に応じてツールの選択を調整してください</li>
+                <li>最新の料金情報は各サービスの公式サイトでご確認ください</li>
             </ul>
         </div>
-
-        <div class="date">
-            作成日: 2025年5月22日<br>
-            見積有効期限: 2025年8月22日
-        </div>
     </div>
+
+
 </body>
 
 </html>
