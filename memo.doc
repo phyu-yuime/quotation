@@ -1,11 +1,11 @@
 what is datadog?
 
-Datadog is a software-as-a-service (SaaS) platform primarily used for monitoring and analytics of applications and infrastructure. It helps organizations track metrics, traces, and logs to gain visibility into their systems and identify potential problems. 
+Datadog is a software-as-a-service (SaaS) platform primarily used for monitoring and analytics of applications and infrastructure. It helps organizations track metrics, traces, and logs to gain visibility into their systems and identify potential problems.
 
 
 1. monitoring
 2. analytics
-2. aletring 
+2. aletring
 3. visualization
 4. application Performance
 5. Log Management
@@ -13,7 +13,7 @@ Datadog is a software-as-a-service (SaaS) platform primarily used for monitoring
 7. integrations
 
 
-Auth0 is an authentication and authorization platform used to manage user identity and access control in web and mobile applications. It simplifies the process of adding user authentication to applications, allowing users to log in securely using various methods like passwords, social logins, and multi-factor authentication. 
+Auth0 is an authentication and authorization platform used to manage user identity and access control in web and mobile applications. It simplifies the process of adding user authentication to applications, allowing users to log in securely using various methods like passwords, social logins, and multi-factor authentication.
 
 
 1 .Single Sign-On (SSO):
@@ -22,3 +22,14 @@ Auth0 is an authentication and authorization platform used to manage user identi
 4. Customization
 5. Integration
 
+
+
+### ask to
+
+ - 管理者(admin)側でユーザー組織情報とクライアント組織情報の違い
+ -
+
+
+ ## 設計
+ - 自分が考える機能、設計などをReviewしないとダメです。
+ - 

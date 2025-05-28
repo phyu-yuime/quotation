@@ -56,6 +56,53 @@
             margin: 15px 0 10px 0;
         }
 
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th,
+        td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f4f4f4;
+        }
+
+        .highlight {
+            background-color: #e8f4fc;
+        }
+
+
+
+        .seat-type {
+            margin-top: 20px;
+            background: #f0f4ff;
+            border-left: 4px solid #d6351a;
+            padding: 15px;
+            border-radius: 8px;
+        }
+
+        .seat-type h3 {
+            margin: 0 0 10px;
+            color: #d6351a;
+        }
+
+        .seat-type ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+
+        .seat-type li {
+            margin-bottom: 6px;
+        }
+
+
         .reference-section {
             background: white;
             border-radius: 12px;
@@ -369,6 +416,8 @@
                 flex-direction: column;
                 align-items: center;
             }
+
+
         }
     </style>
 </head>
@@ -467,7 +516,141 @@
             </div>
         </div>
 
-        <div class="main-content">
+
+
+
+        <!-- Frontend Section -->
+        <div class="section frontend-section">
+            <div class="section-header">
+                <div class="section-title">Figmaのシートの種類と整理プラン - 詳細ガイド</div>
+            </div>
+            <h2>Figma シートタイプ (Figma SeatType)</h2>
+
+            <div class="seat-type">
+                <h3>1. フルシート（エディターシート）Full Seat (Editor Seat)</h3>
+                <ul>
+                    <li><strong>対象者(Best For):</strong> デザイナーやエディター(designers and editors)</li>
+                    <li><strong>できること:</strong> ファイル編集、プロトタイプ作成、ライブラリ管理</li>
+                    <li><strong>料金:</strong> 月額¥3,000（Organizationプランではさらに高額）</li>
+                </ul>
+            </div>
+
+            <div class="seat-type">
+                <h3>2. Devシート（開発者向けシート）Developer Seat</h3>
+                <ul>
+                    <li><strong>対象者:</strong> 開発者やQA担当者</li>
+                    <li><strong>できること:</strong> コードの確認・コピー（CSS、Swift、Android）、Devモードの利用</li>
+                    <li><strong>料金:</strong> 月額¥2,250</li>
+                    <li><strong>できないこと:</strong> 編集やプロトタイプ作成</li>
+                </ul>
+            </div>
+
+            <div class="seat-type">
+                <h3>3. コラボシート（ビューアー＋コメント）(Collab Seat)</h3>
+                <ul>
+                    <li><strong>対象者:</strong> プロジェクトマネージャー、クライアント、ステークホルダー</li>
+                    <li><strong>できること:</strong> ファイルの閲覧とコメント</li>
+                    <li><strong>料金:</strong> 無料</li>
+                    <li><strong>できないこと:</strong> 編集やコード確認</li>
+                </ul>
+            </div>
+
+            <h2 style="margin-top:20px">Figma Organization Plans</h2>
+            <table>
+                <tr>
+                    <th>Feature / Plan</th>
+                    <th>Professional</th>
+                    <th>Organization</th>
+                    <th>Enterprise</th>
+                </tr>
+                <tr>
+                    <td>Target Users</td>
+                    <td>Freelancers, Small Teams</td>
+                    <td>Mid-size Teams</td>
+                    <td>Large Corporations</td>
+                </tr>
+                <tr>
+                    <td>Seat Types</td>
+                    <td>Full only</td>
+                    <td>Full, Dev, Collab</td>
+                    <td>Full, Dev, Collab</td>
+                </tr>
+                <tr>
+                    <td>Dev Mode</td>
+                    <td>❌</td>
+                    <td>✅</td>
+                    <td>✅</td>
+                </tr>
+                <tr>
+                    <td>Team Libraries</td>
+                    <td>✅</td>
+                    <td>✅</td>
+                    <td>✅</td>
+                </tr>
+                <tr>
+                    <td>Admin Controls</td>
+                    <td>Basic</td>
+                    <td>Team-based</td>
+                    <td>Granular, Role-based</td>
+                </tr>
+                <tr>
+                    <td>SSO (Single Sign-On)/ SCIM (System for Cross-domain Identity Management)</td>
+                    <td>❌</td>
+                    <td>✅</td>
+                    <td>✅ Advanced</td>
+                </tr>
+                <tr>
+                    <td>Plugin Management</td>
+                    <td>❌</td>
+                    <td>✅</td>
+                    <td>✅ Private Plugins</td>
+                </tr>
+                <tr>
+                    <td>Support</td>
+                    <td>Basic</td>
+                    <td>Standard</td>
+                    <td>Premium</td>
+                </tr>
+            </table>
+
+
+            <h2 style="margin-top: 20px;">Example Use Case</h2>
+            <table>
+                <tr>
+                    <th>Role</th>
+                    <th>Seat Type</th>
+                    <th>Reason</th>
+                </tr>
+                <tr>
+                    <td>UX/UI Designer</td>
+                    <td>Full Seat</td>
+                    <td>Needs to design and prototype</td>
+                </tr>
+                <tr>
+                    <td>Frontend Developer</td>
+                    <td>Dev Seat</td>
+                    <td>Inspect and export assets/code only</td>
+                </tr>
+                <tr>
+                    <td>Project Manager</td>
+                    <td>Collab Seat</td>
+                    <td>View and give feedback</td>
+                </tr>
+                <tr>
+                    <td>Client</td>
+                    <td>Collab Seat</td>
+                    <td>Review designs, no edit needed</td>
+                </tr>
+            </table>
+
+        </div>
+
+
+
+
+
+
+        <div class="main-content" style="margin-top: 30px;">
             <!-- Frontend Section -->
             <div class="section frontend-section">
                 <div class="section-header">
